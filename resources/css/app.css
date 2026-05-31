@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Lora', ui-serif, Georgia, serif;
+
+    --color-brand-green: #4CAF84;
+    --color-brand-green-dark: #3a9a6e;
+    --color-brand-green-light: #f0faf5;
+    --color-brand-purple: #7C6FF7;
+    --color-brand-purple-light: #f3f1ff;
+    --color-brand-orange: #F5924E;
+    --color-brand-orange-light: #fff4ed;
+    --color-brand-blue: #4A9EDF;
+    --color-brand-blue-light: #eef6fd;
+    --color-brand-red: #E05C6A;
+    --color-brand-red-light: #fef0f1;
+    --color-surface: #F7F8FC;
+    --color-muted: #5a5f7a;
+    --color-muted-light: #9499b5;
+    --color-border: #e8eaf3;
+}
+
+@layer base {
+    body {
+        @apply bg-surface text-slate-900 antialiased;
+    }
+}
+
+@layer utilities {
+    .font-display {
+        font-family: var(--font-display);
+    }
+
+    .glass-card {
+        @apply bg-white/80 backdrop-blur-md border border-border shadow-lg;
+    }
+
+    .gradient-brand {
+        background: linear-gradient(135deg, #4CAF84 0%, #5bb88a 40%, #7C6FF7 100%);
+    }
+
+    .gradient-crisis {
+        background: linear-gradient(135deg, #E05C6A, #9B6FF7);
+    }
+
+    .gradient-setup {
+        background: linear-gradient(135deg, #4CAF84, #7C6FF7);
+    }
+
+    .nav-active {
+        @apply bg-brand-green-light text-brand-green font-bold;
+    }
+
+    .nav-active-crisis {
+        @apply bg-brand-red-light text-brand-red font-bold;
+    }
+
+    .animate-fade-up {
+        animation: fadeUp 0.35s ease forwards;
+    }
+
+    .animate-pulse-ring {
+        animation: pulseRing 4s ease-in-out infinite;
+    }
+
+    .meditation-orb {
+        transition: transform 1s ease-in-out;
+    }
+
+    .meditation-float {
+        animation: meditationFloat 6s ease-in-out infinite;
+    }
+
+    .meditation-float-delay {
+        animation: meditationFloat 8s ease-in-out infinite 2s;
+    }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseRing {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(124, 111, 247, 0.4); }
+    50% { transform: scale(1.1); box-shadow: 0 0 0 24px rgba(124, 111, 247, 0); }
+}
+
+@keyframes meditationFloat {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+    50% { transform: translateY(-12px) scale(1.05); opacity: 0.7; }
+}
+
+input[type='range'] {
+    @apply w-full h-1.5 rounded-full appearance-none bg-border outline-none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full bg-brand-green cursor-pointer shadow-md;
+}
